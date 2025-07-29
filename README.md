@@ -1,59 +1,70 @@
-🌞 SunyGlow - Demo de Aplicación
-🔗 Ver Demo
+<h1>🌞 SunyGlow - Demo de Aplicación</h1>
 
-SunyGlow es una aplicación web en desarrollo enfocada en ofrecer una experiencia fluida e intuitiva para los usuarios. Esta página es una versión demo estática construida únicamente con HTML, CSS y JavaScript para mostrar el diseño, flujo de navegación y la interfaz de usuario final.
+<p>
+  <a href="https://sunyglow.netlify.app" target="_blank"><strong>🔗 Ver Demo</strong></a>
+</p>
 
-🛠️ La versión completa estará respaldada por una API en Flask y una base de datos que permitirá persistencia, autenticación y funcionalidades dinámicas.
+<p>
+  <strong>SunyGlow</strong> es una <em>aplicación web en desarrollo</em> enfocada en ofrecer una experiencia fluida e intuitiva para los usuarios. Esta página es una <strong>versión demo estática</strong> construida únicamente con <strong>HTML, CSS y JavaScript</strong> para mostrar el diseño, flujo de navegación y la interfaz de usuario final.
+</p>
 
-🔍 Descripción del proyecto
-Esta demo fue creada como una vista previa funcional del producto final. Incluye:
+<blockquote>
+  🛠️ La versión completa estará respaldada por una API en Flask y una base de datos que permitirá persistencia, autenticación y funcionalidades dinámicas.
+</blockquote>
 
-Maquetación completa del sitio
+<hr>
 
-Navegación simulada
+<h2>🔍 Descripción del Proyecto</h2>
+<ul>
+  <li>Maquetación completa del sitio</li>
+  <li>Navegación simulada</li>
+  <li>Componentes interactivos con JavaScript</li>
+  <li>Diseño responsivo para distintos dispositivos</li>
+</ul>
 
-Componentes interactivos con JS
+<hr>
 
-Diseño responsivo para distintos dispositivos
+<h2>🚧 Tecnologías utilizadas (en la demo)</h2>
+<ul>
+  <li>HTML5</li>
+  <li>CSS3</li>
+  <li>JavaScript (Vanilla)</li>
+</ul>
 
-🚧 Tecnologías utilizadas (en la demo)
-HTML5
+<hr>
 
-CSS3
+<h2>🧠 Próximamente (versión completa)</h2>
+<ul>
+  <li>Backend en <strong>Flask (Python)</strong></li>
+  <li>Base de datos (ej: SQLite o PostgreSQL)</li>
+  <li>Sistema de autenticación de usuarios</li>
+  <li>Funcionalidades CRUD</li>
+  <li>Panel de administración (opcional)</li>
+  <li>API RESTful</li>
+</ul>
 
-JavaScript (Vanilla)
+<hr>
 
-🧠 Próximamente (versión completa)
-La versión real incluirá:
+<h2>💡 Objetivo</h2>
+<p>
+  Esta demo permite:
+</p>
+<ul>
+  <li>Validar la interfaz y experiencia del usuario (UX/UI)</li>
+  <li>Obtener retroalimentación temprana</li>
+  <li>Sentar las bases visuales para el desarrollo del backend</li>
+</ul>
 
-Backend en Flask (Python)
+<hr>
 
-Base de datos (ej: SQLite o PostgreSQL)
-
-Sistema de autenticación de usuarios
-
-Funcionalidades CRUD
-
-Panel de administración (opcional)
-
-API RESTful
-
-💡 Objetivo
-Esta demo permite:
-
-Validar la interfaz y experiencia del usuario (UX/UI)
-
-Obtener retroalimentación temprana
-
-Sentar las bases visuales para el desarrollo del backend
-
-
-📦 Instalación local (demo)
-
-# Clonar repositorio
-git clone [https://github.com/tu_usuario/sunyglow-demo.git](https://github.com/D4n13L-CSTL/Demo-SunnyGlow.git)
+<h2>📦 Instalación local (demo)</h2>
+<pre><code># Clonar repositorio
+git clone https://github.com/D4n13L-CSTL/Demo-SunnyGlow.git
 cd sunyglow-demo
 
-# Abrir index.html en tu navegador
-⚠️ No es necesario ningún servidor, ya que es una demo estática.
+# Abrir index.html en tu navegador</code></pre>
+
+<p><strong>⚠️ No es necesario ningún servidor</strong>, ya que es una demo estática.</p>
+
+<hr>
 

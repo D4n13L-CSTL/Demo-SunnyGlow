@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Beauty Inventory - Sistema de Inventario Cosmético</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-palette"></i>
+                    <h1>Beauty Inventory</h1>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-box"></i>
+                        <div>
+                            <span class="stat-number" id="totalProducts">0</span>
+                            <span class="stat-label">Productos</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-dollar-sign"></i>
+                        <div>
+                            <span class="stat-number" id="totalInvestment">$0</span>
+                            <span class="stat-label">Inversión</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-chart-line"></i>
+                        <div>
+                            <span class="stat-number" id="totalSales">$0</span>
+                            <span class="stat-label">Ventas</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fab fa-telegram"></i>
+                        <div>
+                            <span class="stat-number" id="botSales">$0</span>
+                            <span class="stat-label">Bot Ventas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="inventory">
+                <i class="fas fa-boxes"></i>
+                Inventario
+            </button>
+            <button class="tab-btn" data-tab="add-product">
+                <i class="fas fa-plus-circle"></i>
+                Agregar Producto
+            </button>
+            <button class="tab-btn" data-tab="sales">
+                <i class="fas fa-shopping-cart"></i>
+                Ventas
+            </button>
+            <button class="tab-btn" data-tab="bot-config">
+                <i class="fab fa-telegram"></i>
+                Bot Config
+            </button>
+            <button class="tab-btn" data-tab="history">
+                <i class="fas fa-history"></i>
+                Historial
+            </button>
+        </nav>
+
+        <!-- Content Sections -->
+        <main class="main-content">
+            <!-- Inventory Tab -->
+            <section id="inventory" class="tab-content active">
+                <div class="section-header">
+                    <h2><i class="fas fa-boxes"></i> Mi Inventario</h2>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Buscar productos...">
+                    </div>
+                </div>
+                <div class="inventory-grid" id="inventoryGrid">
+                    <!-- Products will be dynamically added here -->
+                </div>
+            </section>
+
+            <!-- Add Product Tab -->
+            <section id="add-product" class="tab-content">
+                <div class="section-header">
+                    <h2><i class="fas fa-plus-circle"></i> Agregar Nuevo Producto</h2>
+                </div>
+                <div class="form-container">
+                    <form id="productForm" class="product-form">
+                        <div class="form-group">
+                            <label for="productName">
+                                <i class="fas fa-tag"></i>
+                                Nombre del Producto
+                            </label>
+                            <input type="text" id="productName" required placeholder="Ej: Labial Mate Rosa">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="productCost">
+                                    <i class="fas fa-money-bill"></i>
+                                    Costo de Adquisición
+                                </label>
+                                <input type="number" id="productCost" step="0.01" required placeholder="0.00">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="productPrice">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    Precio de Venta
+                                </label>
+                                <input type="number" id="productPrice" step="0.01" required placeholder="0.00">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="productQuantity">
+                                    <i class="fas fa-cubes"></i>
+                                    Cantidad
+                                </label>
+                                <input type="number" id="productQuantity" required placeholder="1" min="1">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="productCategory">
+                                    <i class="fas fa-list"></i>
+                                    Categoría
+                                </label>
+                                <select id="productCategory" required>
+                                    <option value="">Seleccionar categoría</option>
+                                    <option value="labiales">Labiales</option>
+                                    <option value="bases">Bases</option>
+                                    <option value="sombras">Sombras</option>
+                                    <option value="rubores">Rubores</option>
+                                    <option value="mascaras">Máscaras</option>
+                                    <option value="delineadores">Delineadores</option>
+                                    <option value="skincare">Skincare</option>
+                                    <option value="otros">Otros</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productDescription">
+                                <i class="fas fa-align-left"></i>
+                                Descripción (Para el Bot)
+                            </label>
+                            <textarea id="productDescription" placeholder="Descripción que verán los clientes en Telegram" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="availableInBot" checked>
+                                <i class="fab fa-telegram"></i>
+                                Disponible en Bot de Telegram
+                            </label>
+                        </div>
+                        
+                        <div class="profit-display">
+                            <div class="profit-item">
+                                <span>Ganancia por unidad:</span>
+                                <span id="unitProfit">$0.00</span>
+                            </div>
+                            <div class="profit-item">
+                                <span>Inversión total:</span>
+                                <span id="totalInvestmentDisplay">$0.00</span>
+                            </div>
+                            <div class="profit-item">
+                                <span>Ganancia potencial:</span>
+                                <span id="potentialProfit">$0.00</span>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-plus"></i>
+                            Agregar Producto
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Sales Tab -->
+            <section id="sales" class="tab-content">
+                <div class="section-header">
+                    <h2><i class="fas fa-shopping-cart"></i> Registrar Venta Manual</h2>
+                </div>
+                <div class="form-container">
+                    <form id="saleForm" class="product-form">
+                        <div class="form-group">
+                            <label for="saleProduct">
+                                <i class="fas fa-box"></i>
+                                Producto
+                            </label>
+                            <select id="saleProduct" required>
+                                <option value="">Seleccionar producto</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="saleQuantity">
+                                    <i class="fas fa-sort-numeric-up"></i>
+                                    Cantidad Vendida
+                                </label>
+                                <input type="number" id="saleQuantity" required placeholder="1" min="1">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="salePrice">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    Precio de Venta
+                                </label>
+                                <input type="number" id="salePrice" step="0.01" required placeholder="0.00">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customerName">
+                                <i class="fas fa-user"></i>
+                                Cliente (Opcional)
+                            </label>
+                            <input type="text" id="customerName" placeholder="Nombre del cliente">
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-cash-register"></i>
+                            Registrar Venta
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Bot Configuration Tab -->
+            <section id="bot-config" class="tab-content">
+                <div class="section-header">
+                    <h2><i class="fab fa-telegram"></i> Configuración del Bot</h2>
+                </div>
+                <div class="bot-config-container">
+                    <div class="bot-status-card">
+                        <div class="bot-status-header">
+                            <i class="fab fa-telegram"></i>
+                            <h3>Estado del Bot</h3>
+                            <span class="status-indicator" id="botStatus">Desconectado</span>
+                        </div>
+                        <div class="bot-info">
+                            <p><strong>Bot Token:</strong> <span id="botTokenDisplay">No configurado</span></p>
+                            <p><strong>Última actividad:</strong> <span id="lastActivity">Nunca</span></p>
+                            <p><strong>Ventas del bot hoy:</strong> <span id="todayBotSales">$0.00</span></p>
+                        </div>
+                    </div>
+
+                    <div class="form-container">
+                        <form id="botConfigForm" class="product-form">
+                            <div class="form-group">
+                                <label for="botToken">
+                                    <i class="fas fa-key"></i>
+                                    Token del Bot de Telegram
+                                </label>
+                                <input type="text" id="botToken" placeholder="Ingresa el token de tu bot">
+                                <small>Obtén tu token desde @BotFather en Telegram</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="welcomeMessage">
+                                    <i class="fas fa-comment"></i>
+                                    Mensaje de Bienvenida
+                                </label>
+                                <textarea id="welcomeMessage" rows="3" placeholder="¡Hola! Bienvenida a nuestra tienda de cosméticos..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" id="autoConfirmOrders">
+                                    <i class="fas fa-check-circle"></i>
+                                    Confirmar pedidos automáticamente
+                                </label>
+                            </div>
+
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-save"></i>
+                                Guardar Configuración
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="bot-instructions">
+                        <h3><i class="fas fa-info-circle"></i> Instrucciones de Configuración</h3>
+                        <ol>
+                            <li>Abre Telegram y busca @BotFather</li>
+                            <li>Envía el comando /newbot</li>
+                            <li>Sigue las instrucciones para crear tu bot</li>
+                            <li>Copia el token que te proporciona</li>
+                            <li>Pégalo en el campo de arriba y guarda</li>
+                            <li>¡Tu bot estará listo para vender!</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History Tab -->
+            <section id="history" class="tab-content">
+                <div class="section-header">
+                    <h2><i class="fas fa-history"></i> Historial de Ventas</h2>
+                    <div class="filter-controls">
+                        <select id="filterPeriod">
+                            <option value="all">Todas las ventas</option>
+                            <option value="today">Hoy</option>
+                            <option value="week">Esta semana</option>
+                            <option value="month">Este mes</option>
+                        </select>
+                        <select id="filterSource">
+                            <option value="all">Todas las fuentes</option>
+                            <option value="manual">Ventas manuales</option>
+                            <option value="bot">Ventas del bot</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="history-container" id="historyContainer">
+                    <!-- Sales history will be dynamically added here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-check-circle"></i>
+                <h3 id="modalTitle">¡Éxito!</h3>
+            </div>
+            <p id="modalMessage">Operación completada exitosamente</p>
+            <button id="modalClose" class="modal-btn">Cerrar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
